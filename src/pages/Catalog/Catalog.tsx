@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import * as ApiTmbService from '../../services/apiTmdb'
 import List from '../../components/molecules/List'
-import MovieInterface from '../../models/interfaces/Movie'
+import MovieInterface, { SimpleMovieInterface } from '../../models/interfaces/Movie'
 import HighlightMovie from '../../components/molecules/HighlightMovie'
+import Header from '../../components/molecules/Header'
 
 function Catalog() {
-  const [popularMovies, setPopularMovies] = useState<MovieInterface[]>([])
-  const [topRatedMovies, setTopRatedMovies] = useState<MovieInterface[]>([])
   const [highlightMovie, setHighlightMovie] = useState<MovieInterface>()
+  const [popularMovies, setPopularMovies] = useState<SimpleMovieInterface[]>([])
+  const [topRatedMovies, setTopRatedMovies] = useState<SimpleMovieInterface[]>([])
+  const [upcomingMovies, setUpcomingMovies] = useState<SimpleMovieInterface[]>([])
 
 
   const imgUrl = 'https://image.tmdb.org/t/p/w300'
@@ -19,7 +21,8 @@ function Catalog() {
         .then((response) => {
           const movieImgs = response.results.map((result) => {
             return {
-              backdrop_path: result.backdrop_path,
+              ...result,
+              backdrop_path: originalImgUrl + result.backdrop_path,
               poster_path: imgUrl + result.poster_path,
               title: result.title,
               id: result.id,
@@ -34,7 +37,8 @@ function Catalog() {
         .then((response) => {
           const movieImgs = response.results.map((result) => {
             return {
-              backdrop_path: result.backdrop_path,
+              ...result,
+              backdrop_path: originalImgUrl + result.backdrop_path,
               poster_path: imgUrl + result.poster_path,
               title: result.title,
               id: result.id,
@@ -44,8 +48,25 @@ function Catalog() {
         })
     }
 
+    function searchUpcoming() {
+      ApiTmbService.getUpcoming()
+        .then((response) => {
+          const movieImgs = response.results.map((result) => {
+            return {
+              ...result,
+              backdrop_path: originalImgUrl + result.backdrop_path,
+              poster_path: imgUrl + result.poster_path,
+              title: result.title,
+              id: result.id,
+            }
+          })
+          setUpcomingMovies(movieImgs)
+        })
+    }
+
     searchPopular()
     searchTopRated()
+    searchUpcoming()
   }, [])
 
   useEffect(() => {
@@ -60,9 +81,13 @@ function Catalog() {
   }, [popularMovies])
 
   return <>
-    {highlightMovie && (<HighlightMovie movie={highlightMovie} />)}
-    <List title='Populares' moviesImg={popularMovies} />
-    <List title='Top Assistidos' moviesImg={topRatedMovies} />
+    <div className="spacing">
+      <Header></Header>
+      {highlightMovie && (<HighlightMovie movie={highlightMovie} />)}
+      <List title='Populares' moviesImg={popularMovies} />
+      <List title='Top Assistidos' moviesImg={topRatedMovies} />
+      <List title='Últimos Lançamentos' moviesImg={upcomingMovies} />
+    </div>
   </>
 }
 
