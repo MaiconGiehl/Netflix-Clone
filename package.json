@@ -2,7 +2,7 @@
   "name": "netflix-clone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maicongiehl.github.io/react-gh-pages",
+  "homepage": "https://maicongiehl.github.io/Netflix-Clone",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
