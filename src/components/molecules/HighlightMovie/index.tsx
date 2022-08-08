@@ -16,7 +16,7 @@ function HighlightMovie({ movie }: HighlightMovieInterface) {
   }
 
   return (
-    <div style={{
+    <div id="highlight-box" style={{
       backgroundImage: `url(${movie.backdrop_path})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
@@ -31,9 +31,12 @@ function HighlightMovie({ movie }: HighlightMovieInterface) {
           height: 'inherit',
         }}>
           <div id="highlight-box"> 
-            <Title id="highlight-title">{movie.title}</Title>
+            <Title id="highlight-title"><b>{movie.title}</b></Title>
             <h3 id="highlight-text">{movie.overview}</h3>
-            <Button variant="contained" onClick={() => sendToMovie(movie.id)}>Assistir</Button>
+            <br />
+            <div id="highlight-actions">
+              <Button id="watch-button" variant="contained" onClick={() => sendToMovie(movie.id)}>Assistir</Button>
+            </div>
           </div>
         </div>
       </div>

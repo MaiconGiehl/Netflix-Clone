@@ -27,16 +27,15 @@ function List({ moviesImg, title }: ListInterface) {
 
   return (
     <div className='categoria'>
-      <br />
 
-      <Title>{title}</Title>
+      <Title className="list-title">{title}</Title>
       <div
         className='categoria-lista'
         ref={listaRef}
       >
         <Button
           className='botao-lista categoria-esquerda'
-          onClick={() => scroll(-300)}
+          onClick={() => scroll(-1600)}
         >
           <MdOutlineArrowBackIosNew className='icone' size={35} />
         </Button>
@@ -51,7 +50,7 @@ function List({ moviesImg, title }: ListInterface) {
         }
         <Button
           className='botao-lista categoria-direita'
-          onClick={() => scroll(300)}
+          onClick={() => scroll(1600)}
         >
           <MdOutlineArrowForwardIos className='icone' size={35} />
         </Button>

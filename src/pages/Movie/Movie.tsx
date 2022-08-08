@@ -4,6 +4,7 @@ import * as ApiTmbService from '../../services/apiTmdb'
 import MovieInterface from "../../models/interfaces/Movie";
 import VideoFrame from "../../components/atoms/VideoFrame";
 import Header from "../../components/molecules/Header";
+import { Grid } from "@mui/material";
 
 function Movie() {
   const { id } = useParams();
@@ -23,19 +24,15 @@ function Movie() {
   }, [id, movie])
 
   return <>
-    <div className="spacing"></div>
-    <Header></Header>
-      <div className="movie-box">
+  <Header></Header>
+      <Grid className="movie-text">
         <h1 className="movie-title">{movie && movie.title}</h1>
-        <h3 className="movie-desc">{movie && movie.overview}</h3>
-        </div>
-    {movie && movie.backdrop_path && (
-      <img className="movie-img" src={imgUrl + movie.backdrop_path} alt="" />
-    )}
-    <div>
-      {videoKey && <VideoFrame width="1920" height="1080" videoKey={videoKey + ''} />}
-    </div>
-    <br />
+        <h5 className="movie-desc">{movie && movie.overview}</h5>
+      </Grid>
+      <Grid >
+        {videoKey && <VideoFrame width='100%' height="1080p" videoKey={videoKey + ''} />}
+        <img className="unavailable" src="https://t.ctcdn.com.br/jwvehjEb4GgEuEWirVt81ULFvEM=/1400x788/smart/filters:format(webp)/i525197.png" alt="" />
+      </Grid>
   </>
 }
 

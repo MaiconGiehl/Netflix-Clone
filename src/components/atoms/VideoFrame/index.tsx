@@ -1,3 +1,4 @@
+import { ClassNames } from "@emotion/react"
 import React from "react"
 
 interface VideoFrameInterface {
@@ -8,13 +9,15 @@ interface VideoFrameInterface {
 
 function VideoFrame({ videoKey, width, height }: VideoFrameInterface) {
   return <iframe
+    className="movie"
     width={width}
     height={height}
     src={"https://www.youtube.com/embed/" + videoKey}
     title="YouTube video player"
     frameBorder={0}
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen>
+    allowFullScreen
+  >
   </iframe>
 }
 

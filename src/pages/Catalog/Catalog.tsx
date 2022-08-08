@@ -81,13 +81,11 @@ function Catalog() {
   }, [popularMovies])
 
   return <>
-    <div className="spacing">
       <Header></Header>
       {highlightMovie && (<HighlightMovie movie={highlightMovie} />)}
       <List title='Populares' moviesImg={popularMovies} />
       <List title='Top Assistidos' moviesImg={topRatedMovies} />
       <List title='Últimos Lançamentos' moviesImg={upcomingMovies} />
-    </div>
   </>
 }
 
