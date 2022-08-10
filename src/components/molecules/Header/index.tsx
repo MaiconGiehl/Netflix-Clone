@@ -5,12 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import { Link, useNavigate } from 'react-router-dom';
 import NetflixLogo from '../../atoms/NetflixLogo/Index';
 
-function BasicExample() {
-    let navigate = useNavigate(); 
-    const routeChange = () =>{ 
-      let path = `newPath`; 
-      navigate(path);
-    }
+function Header() {
+    
   return (
     <Navbar collapseOnSelect fixed='top' expand="lg" bg="dark" variant="dark" className="header">
     <Container>
@@ -22,7 +18,7 @@ function BasicExample() {
           <Nav.Link>Séries</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link>Usuário3306</Nav.Link>
+          <Nav.Link><Link to="/userChoose" style={{color: '#FFFFFF8C', textDecoration: 'none'}}>Usuário3306</Link></Nav.Link>
           <Avatar alt="Remy Sharp" src="" />
         </Nav>
       </Navbar.Collapse>
@@ -31,4 +27,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default Header;

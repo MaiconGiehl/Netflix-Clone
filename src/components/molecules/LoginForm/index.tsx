@@ -79,7 +79,7 @@ function LoginForm() {
                             </Grid>
                             <Grid item>
                                 <br />
-                                <Link to='/catalogo'>
+                                <Link to='/userChoose'>
                                     <Button type="submit" variant="danger" style={{ width: '100%' }}>Enviar</Button>
                                 </Link>
                             </Grid>

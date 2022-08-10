@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 * {
   margin: 0;
-}a
+}
+
+a:link {
+  text-decoration: none;
+}
 
 body {
   background-color: #0f0f0f;
@@ -138,4 +142,49 @@ body {
 
 .list-title {
   margin-left: 1%;
+}
+
+html, #who-watch {
+  background-color: #0f0f0f;
+}
+
+#choose-user {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15%; 
+}
+
+.choose-user-name {
+  text-align: center;
+  margin-top: 3%;
+}
+
+#who-watch-title {
+  text-align: center;
+  margin-top: 10vw;
+  margin-bottom: -10vw;
+  color: white;
+}
+
+.who-watch-name {
+  transform: scale(0.9);
+  text-align: center;
+  text-decoration: none ;
+  color: white;
+  margin-top: 10px;
+}
+
+.who-watch-name:hover {
+  transform: scale(1);
+  transition: ease 0.2s;
+}
+
+.who-watch-img {
+  transform: scale(0.9);
+  border-radius: 10px;
+}
+
+.who-watch-img:hover{
+  transform: scale(1);
+  transition: ease 0.2s;
 }
